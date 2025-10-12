@@ -1,4 +1,4 @@
-*{
+                                                                   *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -8,6 +8,15 @@ body, html {
     overflow-x: hidden;
      overflow-y: auto;
 }
+.hero, .right, .hero-combined-image {
+  transform: translateZ(0); /* forces GPU rendering */
+  backface-visibility: hidden; /* optional */
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 
 
 .header {
@@ -218,201 +227,28 @@ body, html {
   background-color: #e01132;   /* slightly darker shade on hover */
 }
 
-/* Right section */ 
-.right { position: relative; 
-  top: 90px; /* Y from Figma */
-  right: 40.13px; /* X from Figma */
-   width: 633.87px; /* W */
-   height: 727.37px;/* H */
-    overflow: visible;  
-   }
 
-.badge.rating {
-  position: absolute;         /* relative to .right */
-  top: 395px;                 /* from top of .right */
-  left: -37px; 
-              
-  width: fit-content;         /* hug the content horizontally */
-  height: fit-content;        /* hug the content vertically */
-  padding: 20px 15px;         /* vertical 20px, horizontal 15px */
-  background-color: #ffffff;
-  display: flex;              /* align content */
-  align-items: center;
-  justify-content: center;
-  z-index: 2;
-  border-radius: 10px;        /* adjust as per Figma */
-  font-family: 'Figtree', sans-serif;
-  font-size: 18px;
-  font-weight: 500;
-}
-
-/* 4.9 number */
-.badge.rating > div:first-child {
-  width: fit-content;           /* hug the content horizontally */
-  height: fit-content;          /* hug content vertically */
-  font-family: 'Inter', sans-serif;
-  font-weight: 600;             /* semi-bold */
-  font-size: 64px;              /* as per Figma */
-  line-height: 64px;            /* match font size */
-  letter-spacing: 0;            /* 0% */
-  color: #1CB098;               /* Figma color */
+.right {
+  position: relative;
+  top: 100px; 
+  right: 40.13px;
+  width: 633.87px;
+  height: 727.37px;
   display: flex;
-  align-items: center;
   justify-content: center;
-}
-
-/* Right part of badge (stars + text) */
-.badge.rating > div:last-child {
-  display: flex;
-  flex-direction: column;       /* vertical stacking */
-  justify-content: center;
-  width: 199px;                 /* as per Figma */
-   height: fit-content; /* hug content */
-    gap: 11px;                     /* space between stars and text inside column */
-  padding:  15px;        /* top/bottom 30.32, right 15 */
-  margin-left: 20px;            /* horizontal gap from 4.9 */
-  box-sizing: border-box;       /* include padding in width/height */
-}
-
-/* Stars inside right part of badge */
-.badge.rating .stars {
-  display: flex;
-   width: fit-content;        /* hug content horizontally */
-  height: fit-content;             /* height of row */
-  gap: 2px;                    /* space between each star */
-         /* gap between stars and text */
-}
-
-
-.badge.rating .stars span {
-  width: 17.12px;              /* each star width */
-  height: 16.35px;             /* each star height */
-  display: inline-block;       /* keep dimensions */
-}
-
-/* Instructor Rating text */
-.badge.rating .rating-text {
-  width: 100%;          /* fill parent width */
-  height: fit-content;  /* hug height */
-  font-family: 'Figtree', sans-serif;
-  font-weight: 600;
-  font-size: 24px;
-  line-height: 24px;    /* matches font size for precise vertical alignment */
-  letter-spacing: 0;
-  color: black;
-    white-space: nowrap;
-}
-
-/* ---------- Badge 2 (Resume Count) ---------- */
-.badge.resume-count {
-  position: absolute;
-  top: 544px;               /* distance from top of .right */
-  right: 40.34px;            /* from right edge */
-  width: 270.66px;          /* Figma width */
-  height: 133.43px;         /* Figma height */
-  display: flex;            /* mask + info side-by-side */
   align-items: center;
-  gap: 20px;                /* horizontal gap between inner items */
-    z-index: 2;
-  padding: 30px;            /* equal vertical & horizontal padding */
-  background: #ffffff;
-  border-radius: 10px;      /* rounded corners */
-  box-sizing: border-box;   /* include padding in size */
-  font-family: 'Figtree', sans-serif;
+  overflow: visible;
 }
 
-/* mask image */
-.badge.resume-count .mask {
-  width: 80px;              /* adjust if Figma gives specific size */
-  height: 80px;
+/* Combined hero image */
+.hero-combined-image {
+  width: 633.87px;
+  height: 727.37px;
   object-fit: contain;
   display: block;
-}
-
-/* Right section inside badge 2 */
-.badge.resume-count .rating-info {
-  width: 124px;              /* fixed width as per Figma */
-  height: auto;              /* “Hug” means shrink to fit its content */
-  display: flex;
-  flex-direction: column;    /* stack number + text vertically */
-  justify-content: center;
-  align-items: flex-start;   /* left align */
-  gap: 0;                    /* no gap between number and text */
-  box-sizing: border-box;
-}
-
-/* “260+” */
-.badge.resume-count .number {
-  width: 124px;              /* Fill (relative to container width) — using px for precision */
-  height: auto;              /* Hug — fits its text height */
-  font-family: 'Figtree', sans-serif;
-  font-weight: 800;          /* ExtraBold */
-  font-size: 30px;           /* as per Figma */
-  line-height: normal;       /* “auto” line height in Figma = normal */
-  letter-spacing: 0;         /* 0% */
-  color: #000000;            /* black */
-}
-/* Online Resume Created text */
-.badge.resume-count .resume {
-  width: 124px;               /* Fill width */
-  height: auto;               /* Hug height */
-  font-family: 'Figtree', sans-serif;
-  font-weight: 500;           /* Medium */
-  font-size: 17px;            /* Figma font size */
-  line-height: normal;        /* Auto line height */
-  letter-spacing: 0;          /* 0% */
-  color: #666666;             /* Figma color */
-}
-
-/* make sure parent doesn't clip children unintentionally */
-.hero, .right {
-  overflow: visible; /* allow ellipses to show */
-}
-
-/* Ellipse 2: full-width circle behind */
-.ellipse2 {
-  position: absolute;
-  top: 93.49px;        
-  right: 40.13px;        
-   bottom: 0.37px; 
-  width: 633.87px;
-  height: 633.88px;
-    background: radial-gradient(circle at top, #FECDD5 0%, #FFE2E7 100%);
-  border-radius: 50%;
-  z-index: 0;            /* behind ellipse1 and the image */
-}
-
-
-/* Ellipse 1: smaller circle on top of ellipse2 but still behind image */
-.ellipse1 {
-  position: absolute;
-  top: 171.68px;        /* distance from top of .hero */
-  right: 118.32px;
-  width: 476.45px;
-  height: 476.45px;
-
-  background: radial-gradient(circle at top, #FFE4E9 0%, #FFCBD4 100%);
-  border-radius: 50%;
-  z-index: 1;
-}
-
-/* main image must sit above ellipses but below badges */
-.main-image {
-  position: relative;
   z-index: 2;
-  right:42.74px;
-  display: block;
-  background: transparent; /* ensure no background-color on the img element */
-  width:506px;
-  height:727px
 }
 
-/* badges must be above the image so they overlap it */
-.badge.rating,
-.badge.resume-count {
-  z-index: 3;
-  position: absolute; /* keep their absolute positioning */
-}
 
 .features-section {
   background-color: #ffffff; /* white background */
@@ -659,7 +495,7 @@ body, html {
   }
 
   .left h1 {
-     margin-top: 10px; 
+    margin-top: 10px; 
     width: 100%;
     font-size: 48px;      /* smaller than 64px */
     line-height: 56px;
@@ -699,53 +535,36 @@ body, html {
     font-size: 14px;
   }
 
-  /* Right section */
+  /* Right section (single merged image) */
   .right {
     top: 0;
     right: 0;
-    width: 80%;
+    width: 100%;
     max-width: 633px;
     height: auto;
-    margin-top: 40px;
+    margin-top: 60px;
     display: flex;
     justify-content: center;
     position: relative;
   }
 
-  .main-image {
-    width: 400px;
+  .hero-combined-image {
+    width: 100%;
+    max-width: 500px; /* was 400px — increased for better balance */
     height: auto;
-    right: 0;
-  }
-
-  .ellipse1 {
-    width: 350px;
-    height: 350px;
-    top: 50px;
-    right: 50px;
-  }
-
-  .ellipse2 {
-    width: 450px;
-    height: 450px;
-    top: 20px;
-    right: 20px;
-  }
-
-  /* badges scale down */
-  .badge.rating {
-    top: 300px;
-    left: -20px;
-    transform: scale(0.8);
-  }
-
-  .badge.resume-count {
-    top: auto;
-    bottom: 20px;
-    right: 20px;
-    transform: scale(0.8);
+    margin-top: 90px; /* matches your earlier note */
+    object-fit: contain;
   }
 }
+
+/* Optional: for very small screens (mobile under 600px) */
+@media (max-width: 600px) {
+  .hero-combined-image {
+    max-width: 90vw; /* use most of the screen width */
+    margin-top: 60px;
+  }
+}
+
 
 
 /* Features Section Responsive */
@@ -779,7 +598,7 @@ body, html {
 
   .feature-card {
     width: 90%;              /* scale cards to fit screen */
-    max-width: 400px;        /* optional max width */
+    max-width: 400px;        /*  max width */
     height: auto;            /* allow height to adjust */
     padding: 20px;
     gap: 16px;               /* reduce spacing inside card */
